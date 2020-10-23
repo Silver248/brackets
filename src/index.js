@@ -1,18 +1,33 @@
 module.exports = function check(str, bracketsConfig) {
-let n = 0;
-let m = 0;
-for (let i=0; i<str.length; i++) {
-    if (i='('||'['){
-        n=n+1;
-    } else if (i=')'||']'){
-        n=n-1;
-    } else if (i='|') {
-        m=m+1;
+    let k=0;
+    let l=0;
+    let m=0;
+    let n=0;
+    for (let i=0; i<str.length; i++) {
+        if (str[i]=='(') {
+            k++;
+        } else if (str[i]=='{') {
+            l++;
+        } else if (str[i]=='[') {
+            m++;
+        } else if (str[i]=='|') {
+            n++;
+        } else if (str[i]==')') {
+            k--;
+        } else if (str[i]=='}') {
+            l--;
+        } else if (str[i]==']') {
+            m--;
+        }
     }
-  }
-  if ((n=0) && (m%2 == 0)) {
-      return true;
-  } else {
-      return false;
-  }
+
+    if ((k==0)||(l==0)||(m==0)||(n%2 == 0)){
+        return true;
+    } else {
+        return false;
+    }
 }
+
+
+/*||str.indexOf('(')<str.indexOf(')')||str.indexOf('{')<str.indexOf('}')||str.indexOf('[')<str.indexOf(']')*/
+
